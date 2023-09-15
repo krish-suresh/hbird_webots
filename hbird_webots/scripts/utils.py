@@ -35,3 +35,6 @@ class HBParams:
     B = np.array([[1,   1,   1,  1],
                   [0,   L,   0, -L],
                   [-L,  0,   L,  0]])
+
+def angle_wrap(angle : float):
+    return (angle + np.pi) % (2 * np.pi) - np.pi
