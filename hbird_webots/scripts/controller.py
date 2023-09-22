@@ -34,13 +34,16 @@ class Controller3D():
         """
         U = np.array([0.,0.,0.,0.])
         # your code here
+        heading = angle_wrap(setpoint.heading)
 
         U[0] = self.params.mass * (self.pid_gains["kd_z"]*(-state.velocity.z) + self.pid_gains["kp_z"]*(setpoint.position.z - state.position.z) + self.params.g)
         ẍ_c = self.pid_gains["kd_x"]*(-state.velocity.x) + self.pid_gains["kp_x"]*(setpoint.position.x - state.position.x)
         ÿ_c = self.pid_gains["kd_y"]*(-state.velocity.y) + self.pid_gains["kp_y"]*(setpoint.position.y - state.position.y)
-        phi_d = (1.0/self.params.g)*(ẍ_c*sin(setpoint.heading) - ÿ_c*cos(setpoint.heading))
-        theta_d = (1.0/self.params.g)*(ẍ_c*cos(setpoint.heading) + ÿ_c*sin(setpoint.heading))
-        psi_d = setpoint.heading
+        phi_d = (1.0/self.params.g)*(ẍ_c*sin(heading) - ÿ_c*cos(heading))
+        theta_d = (1.0/self.params.g)*(ẍ_c*cos(heading) + ÿ_c*sin(heading))
+        # phi_d = state.position.x
+        # theta_d = state.position.y
+        psi_d = heading
         U[1] =  self.pid_gains["kd_p"]*(-state.angular_velocity.x) + self.pid_gains["kp_phi"]*(phi_d - state.orientation.x)
         U[2] =  self.pid_gains["kd_q"]*(-state.angular_velocity.y) + self.pid_gains["kp_theta"]*(theta_d - state.orientation.y)
         U[3] =  self.pid_gains["kd_r"]*(-state.angular_velocity.z) + self.pid_gains["kp_psi"]*(angle_wrap(psi_d - state.orientation.z))
