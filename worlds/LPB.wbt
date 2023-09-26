@@ -1,0 +1,65 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "../protos/Mark2Assembly.proto"
+
+WorldInfo {
+  basicTimeStep 8
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+}
+Viewpoint {
+  orientation -0.5773502691896257 0.5773502691896257 0.5773502691896257 2.0943245915045035
+  position -0.0006 -0.0006 20.00
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 10.0 9.0
+  tileSize 1 1
+  appearance Parquetry {
+    type "light strip"
+    colorOverride 0.1 0.1 0.1
+  }
+}
+Solid {
+  translation 1.935 1.27492 1.22
+  rotation -1 0 0 -5.307179586466759e-06
+  children [
+    DEF RACK_CAD CadShape {
+      url [
+        "../protos/meshes/rackwithtexture.obj"
+      ]
+    }
+  ]
+  name "Rack 1"
+  boundingObject DEF RACK_MESH Mesh {
+    url [
+      "../protos/meshes/rackwithtexture.obj"
+    ]
+  }
+}
+
+Solid {
+  translation -2.04 1.27492 1.22
+  rotation -1 0 0 -5.307179586466759e-06
+  children [
+    USE RACK_CAD
+  ]
+  name "Rack 2"
+  boundingObject USE RACK_MESH
+}
+
+Mark2Assembly {
+  translation -3.9561 -3.5336 0.31
+  rotation 0 0 0 0
+  name "HB1"
+  controller "<extern>"
+}
