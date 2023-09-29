@@ -6,16 +6,21 @@ submodules = 'hbird_webots/scripts'
 
 data_files = []
 data_files.append(('share/ament_index/resource_index/packages', ['resource/' + package_name]))
+data_files.append(('share/' + package_name + '/launch', ['launch/mp2.launch.py']))
 data_files.append(('share/' + package_name + '/launch', ['launch/demo.launch.py']))
 data_files.append(('share/' + package_name + '/protos', ['protos/Mark2Assembly.proto']))
 data_files.append(('share/' + package_name + '/protos/meshes', ['protos/meshes/base_link_good.obj']))
 data_files.append(('share/' + package_name + '/protos/meshes', ['protos/meshes/base_link_good.mtl']))
+data_files.append(('share/' + package_name + '/protos/meshes', ['protos/meshes/rackwithtexture.obj']))
+data_files.append(('share/' + package_name + '/protos/meshes', ['protos/meshes/rackwithtexture.mtl']))
 data_files.append(('share/' + package_name + '/protos/meshes', ['protos/meshes/propeller.obj']))
 data_files.append(('share/' + package_name + '/protos/meshes', ['protos/meshes/propeller.mtl']))
 data_files.append(('share/' + package_name + '/protos/textures', ['protos/textures/cotton beige.jpg']))
 data_files.append(('share/' + package_name + '/protos/textures', ['protos/textures/fast_helix.png']))
 data_files.append(('share/' + package_name + '/worlds', [
     'worlds/flight_arena.wbt']))
+data_files.append(('share/' + package_name + '/worlds', [
+    'worlds/LPB.wbt']))
 data_files.append(('share/' + package_name + '/resource', [
     'resource/hbird_drone.urdf'
 ]))
