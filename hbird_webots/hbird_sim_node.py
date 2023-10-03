@@ -64,7 +64,7 @@ class HbirdDriver:
 
 
         # get pid_gains from yaml file
-        config_path = str(pathlib.Path().parent.resolve())+"/src/hbird_webots/hbird_webots/config/"
+        config_path = str(str(pathlib.Path(__file__).parent))+"/config/"
         config_file = 'pid_gains.yaml'
         with open(config_path+config_file, 'r') as file:
             pid_gains = yaml.load(file, Loader=yaml.FullLoader)

@@ -47,6 +47,6 @@ class Controller3D():
         U[1] =  self.pid_gains["kd_p"]*(-state.angular_velocity.x) + self.pid_gains["kp_phi"]*(phi_d - state.orientation.x)
         U[2] =  self.pid_gains["kd_q"]*(-state.angular_velocity.y) + self.pid_gains["kp_theta"]*(theta_d - state.orientation.y)
         U[3] =  self.pid_gains["kd_r"]*(-state.angular_velocity.z) + self.pid_gains["kp_psi"]*(angle_wrap(psi_d - state.orientation.z))
-        print (f"Orientation: {state.orientation.x:.2f},{state.orientation.y:.2f},{state.orientation.z:.2f}")
-        print (f"Position: {state.position.x:.2f},{state.position.y:.2f},{state.position.z:.2f}. U: {['{0:0.2f}'.format(i) for i in U]}")
+        # print (f"Orientation: {state.orientation.x:.2f},{state.orientation.y:.2f},{state.orientation.z:.2f}")
+        # print (f"Position: {state.position.x:.2f},{state.position.y:.2f},{state.position.z:.2f}. U: {['{0:0.2f}'.format(i) for i in U]}")
         return U
